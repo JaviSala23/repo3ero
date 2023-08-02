@@ -1,8 +1,7 @@
 #de la libreria PyQt5 importamos estos dos elem
-from PyQt5 import QtWidgets, uic  
+from PyQt5 import uic  
 
-#creamos aplicacion QtWidegets
-aplicacion=QtWidgets.QApplication([]) 
+
 
 #clase que maneja la interfaz grafica
 class InterfazGrafica: 
@@ -14,12 +13,19 @@ class InterfazGrafica:
     def contar(self):
         #guardo en texto1 el contenido de mi line edit (cajaTexto1)
         texto1=self.formulario.cajaTexto1.text()
-        #guardo en texto1 el contenido de mi line edit (cajaTexto2)
+        #guardo en texto2 el contenido de mi line edit (cajaTexto2)
         letraAcontar=self.formulario.cajaTexto2.text()
         #cuento cuantas letras / palabras / o caracteres concatendados y ordenados
         cantidad=texto1.count(letraAcontar)
         #inserto la cantidad con un mensaje que dice resultado a mi label (resultado)
-        self.formulario.resultado.text(f"Resultado: '{cantidad}'")
+        self.formulario.resultado.setText(f"Resultado: '{cantidad}'")
+    
+    def concatenar(self):
+        #guardo en texto1 el contenido de mi line edit (cajaTexto1)
+        texto1=self.formulario.cajaTexto1.text()
+        #guardo en texto2 el contenido de mi line edit (cajaTexto2)
+        texto2=self.formulario.cajaTexto2.text()
+        self.formulario.resultado.setText(texto1+texto2)
         
        
     
@@ -27,5 +33,8 @@ class InterfazGrafica:
     def mostrarFormulario(self):
         #conectar el boton con una funcion (evento click)
         self.formulario.traer.clicked.connect(self.contar)
+        #conectar el boton con una funcion (evento click)
+        self.formulario.concatenar.clicked.connect(self.concatenar)
+        #motrar formulario
         self.formulario.show()
         

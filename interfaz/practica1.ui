@@ -51,12 +51,51 @@
     <rect>
      <x>30</x>
      <y>170</y>
-     <width>361</width>
+     <width>491</width>
      <height>31</height>
     </rect>
    </property>
    <property name="text">
     <string/>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="concatenar">
+   <property name="geometry">
+    <rect>
+     <x>120</x>
+     <y>110</y>
+     <width>80</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Concatenar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="sumar">
+   <property name="geometry">
+    <rect>
+     <x>220</x>
+     <y>110</y>
+     <width>80</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Sumar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="restarLetras">
+   <property name="geometry">
+    <rect>
+     <x>320</x>
+     <y>110</y>
+     <width>91</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Restar Letras</string>
    </property>
   </widget>
  </widget>
