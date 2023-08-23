@@ -2,6 +2,7 @@
 from PyQt5 import uic,QtWidgets
 from PyQt5.QtCore import QDate
 from clases.cliente import Cliente
+import sys #importamos libreria del sistema (Windows)
 
 #from clases.cliente import Cliente
 
@@ -17,27 +18,58 @@ class InterfazGrafica:
         self.sentencia=0
         
         
-    def habilitarCajas(self):
-        self.formulario.nombre.setReadOnly(False)
-        self.formulario.contrena.setReadOnly(False)
-        self.formulario.email.setReadOnly(False)
-        self.formulario.telefono.setReadOnly(False)
-        self.formulario.calle.setReadOnly(False)
-        self.formulario.numero.setReadOnly(False)
-        self.formulario.localidad.setReadOnly(False)
-        self.formulario.provincia.setReadOnly(False)
-        self.formulario.pais.setReadOnly(False)
-        self.formulario.dni.setReadOnly(False)
-
-        self.formulario.aceptar.show()
-        self.formulario.cancelar.show()
-        self.formulario.nuevo.hide()
-        self.formulario.editar.hide()
-        self.formulario.eliminar.hide()
-        self.formulario.primero.hide()
-        self.formulario.anterior.hide()
-        self.formulario.posterior.hide()
-        self.formulario.ultimo.hide()
+    def habilitarCajas(self,tipo=3,estado=0):
+        if estado==0:
+            self.formulario.nombre.setReadOnly(True)
+            self.formulario.contrena.setReadOnly(True)
+            self.formulario.email.setReadOnly(True)
+            self.formulario.telefono.setReadOnly(True)
+            self.formulario.calle.setReadOnly(True)
+            self.formulario.numero.setReadOnly(True)
+            self.formulario.localidad.setReadOnly(True)
+            self.formulario.provincia.setReadOnly(True)
+            self.formulario.pais.setReadOnly(True)
+            self.formulario.dni.setReadOnly(True)
+        else:
+            self.formulario.nombre.setReadOnly(False)
+            self.formulario.contrena.setReadOnly(False)
+            self.formulario.email.setReadOnly(False)
+            self.formulario.telefono.setReadOnly(False)
+            self.formulario.calle.setReadOnly(False)
+            self.formulario.numero.setReadOnly(False)
+            self.formulario.localidad.setReadOnly(False)
+            self.formulario.provincia.setReadOnly(False)
+            self.formulario.pais.setReadOnly(False)
+            self.formulario.dni.setReadOnly(False)
+            self.esconder()
+       
+        
+        if tipo==0:
+            self.accion=0
+        else:
+            self.accion=3
+    
+    def esconder(self,estado=0):
+        if estado==1:
+            self.formulario.aceptar.show()
+            self.formulario.cancelar.show()
+            self.formulario.nuevo.hide()
+            self.formulario.editar.hide()
+            self.formulario.eliminar.hide()
+            self.formulario.primero.hide()
+            self.formulario.anterior.hide()
+            self.formulario.posterior.hide()
+            self.formulario.ultimo.hide()
+        else:
+            self.formulario.aceptar.hide()
+            self.formulario.cancelar.hide()
+            self.formulario.nuevo.show()
+            self.formulario.editar.show()
+            self.formulario.eliminar.show()
+            self.formulario.primero.show()
+            self.formulario.anterior.show()
+            self.formulario.posterior.show()
+            self.formulario.ultimo.show()
     
     def nuevoCliente(self):
         self.formulario.nombre.setText("")
@@ -58,9 +90,15 @@ class InterfazGrafica:
             
         else:
             self.formulario.id.setText("1")
-        self.accion=0
-        self.habilitarCajas()
-            
+        self.habilitarCajas(0,1)
+        self.esconder(estado=1)
+    
+    def eliminar(self):
+        self.accion=1
+        self.esconder(estado=1)
+        self.formulario.realmente.show()
+        
+        
         
     def ultimoCliente(self):
         cliente1=Cliente()
@@ -127,35 +165,22 @@ class InterfazGrafica:
         if self.accion==0:
             cliente1.nuevoCliente()
             self.cancelar()
-            cliente1.nuevoCliente()
         if self.accion==1:
             cliente1.eliminarCliente()
+            self.ultimoCliente()
+            self.formulario.realmente.hide()
+            self.cancelar()
         else:
-            cliente1.actualizarCliente()
-        
+            cliente1.actualizarClientes()
+            registro=cliente1.consultarUnCliente()
+            self.rellenarClientes(registro)
+     
     
     def cancelar(self):
-        self.formulario.nombre.setReadOnly(True)
-        self.formulario.contrena.setReadOnly(True)
-        self.formulario.email.setReadOnly(True)
-        self.formulario.telefono.setReadOnly(True)
-        self.formulario.calle.setReadOnly(True)
-        self.formulario.numero.setReadOnly(True)
-        self.formulario.localidad.setReadOnly(True)
-        self.formulario.provincia.setReadOnly(True)
-        self.formulario.pais.setReadOnly(True)
-        self.formulario.dni.setReadOnly(True)
-
-        self.formulario.aceptar.hide()
-        self.formulario.cancelar.hide()
-        self.formulario.nuevo.show()
-        self.formulario.editar.show()
-        self.formulario.eliminar.show()
-        self.formulario.primero.show()
-        self.formulario.anterior.show()
-        self.formulario.posterior.show()
-        self.formulario.ultimo.show()
-        self.ultimoCliente()
+        self.habilitarCajas()
+        self.esconder()
+        self.formulario.realmente.hide()
+        
             
         
         
@@ -167,15 +192,19 @@ class InterfazGrafica:
         cliente1.crearClientes()
         del cliente1
         self.ultimoCliente()
+       
         self.formulario.ultimo.clicked.connect(self.ultimoCliente)
         self.formulario.primero.clicked.connect(self.primerCliente)
         self.formulario.anterior.clicked.connect(self.anterior)
         self.formulario.posterior.clicked.connect(self.posterior)
         self.formulario.nuevo.clicked.connect(self.nuevoCliente)
+        self.formulario.eliminar.clicked.connect(self.eliminar)
+        self.formulario.editar.clicked.connect(self.habilitarCajas)
         self.formulario.aceptar.clicked.connect(self.aceptar)
         self.formulario.cancelar.clicked.connect(self.cancelar)
         self.formulario.aceptar.hide()
         self.formulario.cancelar.hide()
+        self.formulario.realmente.hide()
         #motrar formulario
         self.formulario.show()
         

@@ -203,9 +203,9 @@ text-decoration: underline;</string>
   <widget class="QWidget" name="horizontalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>10</x>
      <y>420</y>
-     <width>411</width>
+     <width>431</width>
      <height>51</height>
     </rect>
    </property>
@@ -257,6 +257,9 @@ text-decoration: underline;</string>
       <property name="text">
        <string>&gt;&gt;</string>
       </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
      </widget>
     </item>
    </layout>
@@ -264,9 +267,9 @@ text-decoration: underline;</string>
   <widget class="QWidget" name="horizontalLayoutWidget_2">
    <property name="geometry">
     <rect>
-     <x>450</x>
+     <x>447</x>
      <y>420</y>
-     <width>168</width>
+     <width>171</width>
      <height>51</height>
     </rect>
    </property>
@@ -286,6 +289,22 @@ text-decoration: underline;</string>
      </widget>
     </item>
    </layout>
+  </widget>
+  <widget class="QLabel" name="realmente">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>340</x>
+     <y>400</y>
+     <width>524</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>¿Realmente quiere eliminar este registro?</string>
+   </property>
   </widget>
  </widget>
  <resources/>

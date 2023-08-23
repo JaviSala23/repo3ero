@@ -70,6 +70,34 @@ class Cliente:
         sentencia=f"SELECT * FROM Clientes WHERE id={self.id}"
         registro=base.consultar(sentencia,cantidad=1)
         return registro
+    
+    def actualizarClientes(self):
+        base = BaseDatos()
+        sentencia=f"""UPDATE Clientes 
+                SET
+                id={self.id},
+                nombre='{self.nombre}', 
+                contraseña='{self.contrasena}',
+                email='{self.email}',
+                telefono='{self.telefono}',
+                calle='{self.calle}',
+                numero={self.numero},
+                localidad='{self.localidad}',
+                provincia='{self.provincia}',
+                pais='{self.pais}',
+                dni={self.dni}  
+                WHERE id={self.id};
+                """
+        base.actualizarBD(sentencia)
+        del base
+    
+    def eliminarCliente(self):
+        base = BaseDatos()
+        sentencia=f"""DELETE FROM Clientes
+                    WHERE id={self.id};
+        """
+        base.actualizarBD(sentencia)
+        del base
                
                 
        
