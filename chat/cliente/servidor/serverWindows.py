@@ -24,7 +24,6 @@ class Servidor():
             self.enlase = socket.socket(self.protocolo[0],self.protocolo[1])
             self.enlase.bind((self.anfitrion, int(self.puerto)))
             self.gestConEntr()
-            return True
         except:
             return False
         
