@@ -20,6 +20,7 @@ principal.formulario.Crear_Canal.triggered.connect(crearCanal1.mostrarVentana)
 
 #Conecto los botones de crear Canal
 crearCanal1.formulario.cancelar.clicked.connect(crearCanal1.ocultarVentana)
+crearCanal1.formulario.crear.clicked.connect(crearCanal1.crear)
 
 
 

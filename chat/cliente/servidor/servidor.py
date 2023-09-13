@@ -3,14 +3,15 @@ from netifaces import interfaces, ifaddresses, AF_INET
 from threading import Thread
 
 class Servidor():
-    def __init__(self):
+    def __init__(self,nombre,descripcion):
         self.protocolo=(socket.AF_INET, socket.SOCK_STREAM)
         self.anfitrion=""
         self.puerto=4000
         self.tamBuffer=1024
         self.enlase=""
-        self.nombre=""
+        self.nombre=nombre
         self.direcciones={} #guarda la conexiones del canal
+        self.descripcion=descripcion
         
     def crearCanal(self):
         try:
@@ -21,6 +22,7 @@ class Servidor():
             print(self.anfitrion)
             self.enlase = socket.socket(self.protocolo[0],self.protocolo[1])
             self.enlase.bind((self.anfitrion, int(self.puerto)))
+            self.gestConEntr()
             return True
         except:
             return False
