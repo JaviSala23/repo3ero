@@ -25,4 +25,5 @@ crearCanal1.formulario.crear.clicked.connect(crearCanal1.crear)
 
 
 
+
 aplicacion.exec()

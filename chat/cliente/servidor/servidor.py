@@ -20,6 +20,7 @@ class Servidor():
                 ip=addresses
             self.anfitrion=ip[0]
             print(self.anfitrion)
+            print(self.nombre,self.descripcion)
             self.enlase = socket.socket(self.protocolo[0],self.protocolo[1])
             self.enlase.bind((self.anfitrion, int(self.puerto)))
             self.gestConEntr()
