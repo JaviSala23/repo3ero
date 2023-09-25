@@ -27,13 +27,15 @@ class crearCanal(InterfazVentana):
    
     nombre=""
     descripcion=""
+    canal=""
     
     def crear(self):
         self.nombre=self.formulario.nombre.text()
         self.descripcion=self.formulario.descripcion.toPlainText()
-        canal1=Servidor(self.nombre,self.descripcion)
-        canal1.crearCanal()
+        self.canal=Servidor(self.nombre,self.descripcion)
+        self.canal.start() #ver mañana, todo
         self.ocultarVentana()
+        print(self.canal)
     
 class UnirCanal(InterfazVentana):
     
