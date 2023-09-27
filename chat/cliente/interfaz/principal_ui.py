@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '/home/javi/Escritorio/practicaRepo/repo3ero/chat/cliente/interfaz/principal.ui'
+# Form implementation generated from reading ui file '/home/javi/Escritorio/escuela/practicaRepo/repo3ero/chat/cliente/interfaz/principal.ui'
 #
 # Created by: PyQt6 UI code generator 6.5.1
 #
@@ -31,9 +31,9 @@ class Ui_MainWindow(object):
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
         self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 569, 419))
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
-        self.listWidget = QtWidgets.QListWidget(parent=self.scrollAreaWidgetContents)
-        self.listWidget.setGeometry(QtCore.QRect(0, 0, 571, 421))
-        self.listWidget.setObjectName("listWidget")
+        self.listView_2 = QtWidgets.QListView(parent=self.scrollAreaWidgetContents)
+        self.listView_2.setGeometry(QtCore.QRect(0, 0, 571, 421))
+        self.listView_2.setObjectName("listView_2")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.scrollArea_2 = QtWidgets.QScrollArea(parent=self.centralwidget)
         self.scrollArea_2.setGeometry(QtCore.QRect(590, 60, 201, 421))
@@ -67,9 +67,12 @@ class Ui_MainWindow(object):
         self.Crear_Canal.setObjectName("Crear_Canal")
         self.actionConectarse_a_un_Canal = QtGui.QAction(parent=MainWindow)
         self.actionConectarse_a_un_Canal.setObjectName("actionConectarse_a_un_Canal")
+        self.actionventanaChat = QtGui.QAction(parent=MainWindow)
+        self.actionventanaChat.setObjectName("actionventanaChat")
         self.menuServidor.addAction(self.Crear_Canal)
         self.menuUsuari.addAction(self.actionModificar_Perfil)
         self.menuUsuari.addAction(self.actionConectarse_a_un_Canal)
+        self.menuUsuari.addAction(self.actionventanaChat)
         self.menubar.addAction(self.menuServidor.menuAction())
         self.menubar.addAction(self.menuUsuari.menuAction())
 
@@ -87,3 +90,4 @@ class Ui_MainWindow(object):
         self.actionModificar_Perfil.setText(_translate("MainWindow", "Modificar Perfil"))
         self.Crear_Canal.setText(_translate("MainWindow", "Crear Canal"))
         self.actionConectarse_a_un_Canal.setText(_translate("MainWindow", "Conectarse a un Canal"))
+        self.actionventanaChat.setText(_translate("MainWindow", "ventanaChat"))

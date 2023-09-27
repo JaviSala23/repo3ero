@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>512</width>
-    <height>119</height>
+    <width>529</width>
+    <height>152</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,7 +19,7 @@
      <x>9</x>
      <y>9</y>
      <width>501</width>
-     <height>61</height>
+     <height>83</height>
     </rect>
    </property>
    <layout class="QFormLayout" name="formLayout">
@@ -31,7 +31,7 @@
      </widget>
     </item>
     <item row="0" column="1">
-     <widget class="QLineEdit" name="lineEdit"/>
+     <widget class="QLineEdit" name="nombrePefil"/>
     </item>
     <item row="1" column="0">
      <widget class="QLabel" name="label_2">
@@ -41,15 +41,51 @@
      </widget>
     </item>
     <item row="1" column="1">
-     <widget class="QLineEdit" name="lineEdit_2"/>
+     <widget class="QLineEdit" name="descripcionPerfil"/>
+    </item>
+    <item row="2" column="1">
+     <widget class="QComboBox" name="colores">
+      <item>
+       <property name="text">
+        <string>NEGRO</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ROJO</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>AZUL</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>ROSA</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>VERDE</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="label_3">
+      <property name="text">
+       <string>Color:</string>
+      </property>
+     </widget>
     </item>
    </layout>
   </widget>
   <widget class="QPushButton" name="Aceptar">
    <property name="geometry">
     <rect>
-     <x>290</x>
-     <y>80</y>
+     <x>320</x>
+     <y>120</y>
      <width>80</width>
      <height>23</height>
     </rect>
@@ -61,14 +97,36 @@
   <widget class="QPushButton" name="Cancelar">
    <property name="geometry">
     <rect>
-     <x>380</x>
-     <y>80</y>
+     <x>410</x>
+     <y>120</y>
      <width>80</width>
      <height>23</height>
     </rect>
    </property>
    <property name="text">
     <string>Cancelar</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="colormuestra">
+   <property name="geometry">
+    <rect>
+     <x>100</x>
+     <y>110</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">background-color: rgb(0, 0, 0);
+border-color: rgb(255, 255, 255);
+border-style:solid;
+border-width:1px
+
+
+</string>
+   </property>
+   <property name="text">
+    <string/>
    </property>
   </widget>
  </widget>

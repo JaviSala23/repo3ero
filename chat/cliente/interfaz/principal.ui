@@ -71,7 +71,7 @@
        <height>419</height>
       </rect>
      </property>
-     <widget class="QListWidget" name="listWidget">
+     <widget class="QListView" name="listView_2">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -151,6 +151,7 @@
     </property>
     <addaction name="actionModificar_Perfil"/>
     <addaction name="actionConectarse_a_un_Canal"/>
+    <addaction name="actionventanaChat"/>
    </widget>
    <addaction name="menuServidor"/>
    <addaction name="menuUsuari"/>
@@ -169,6 +170,11 @@
   <action name="actionConectarse_a_un_Canal">
    <property name="text">
     <string>Conectarse a un Canal</string>
+   </property>
+  </action>
+  <action name="actionventanaChat">
+   <property name="text">
+    <string>ventanaChat</string>
    </property>
   </action>
  </widget>
