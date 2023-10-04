@@ -110,7 +110,14 @@ class Chat(InterfazVentana):
     
 class UnirCanal(InterfazVentana):
     
-    nombreCanal=""
+    ip=""
+    
+    def aceptarCanal(self,cliente):
+        self.ip=self.formulario.ip.text()
+        cliente.canal=(self.ip,4000)
+        cliente.start()
+        self.ocultarVentana()
+        
     
 
         

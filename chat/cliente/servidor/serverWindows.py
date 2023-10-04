@@ -28,7 +28,7 @@ class Servidor(QThread):
             # Crea un socket y lo enlaza a la dirección IP y puerto
             self.enlace = socket.socket(self.protocolo[0], self.protocolo[1])
             self.enlace.bind((self.anfitrion, int(self.puerto)))
-
+            print(self.anfitrion)
             while True:
                 self.enlace.listen(3)  # Escucha hasta 3 conexiones entrantes
                 cliente, direccion_cliente = self.enlace.accept()
