@@ -2,6 +2,7 @@ import socket
 from PyQt5.QtCore import QThread, pyqtSignal
 
 class Cliente(QThread):
+    mensaje_recibido = pyqtSignal(str)
     def __init__(self,nombre,descripcion,color=(0,0,0)):
         super().__init__()
         self.nombre=nombre
