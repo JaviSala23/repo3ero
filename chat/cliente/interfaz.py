@@ -1,7 +1,11 @@
 #de la libreria PyQt5 importamos estos dos elem
-from PyQt5 import uic,QtWidgets
+from PyQt5 import uic
+from PyQt5.QtCore import QTimer, Qt
+from PyQt5.QtWidgets import QApplication, QMainWindow, QListView
+from PyQt5.QtGui import QStandardItemModel, QStandardItem , QColor
 from servidor.servidor import Servidor
 import json
+import ast
 colores={
     "BLANCO":(255,255,255),
     "NEGRO":(0,0,0),
@@ -25,11 +29,42 @@ class InterfazVentana:
         
 
 class ventanaPrincipal(InterfazVentana):
-    
-    def enviar():
-        pass
-    def recibir():
-        pass
+    def __init__(self, direccion):
+        super().__init__(direccion)
+        self.linea=0
+        # Crear un temporizador para actualizar la lista
+        self.timer = QTimer(self.formulario)
+        self.timer.timeout.connect(self.recibir)
+        self.timer.start(1000)  # Actualizar cada 1 segundo
+
+        # Crear un modelo para la lista
+        self.model = QStandardItemModel()
+        self.formulario.chatList.setModel(self.model)
+        
+        
+    def enviar(self,cliente):
+        msj=self.formulario.msj.text()
+
+        cliente.enviarMsj(msj)     
+    def recibir(self):
+        with open("chat.txt", "r") as archivo:
+            lineas=archivo.readlines()
+            cLineas=len(lineas)
+            for i in range(self.linea,cLineas):
+                
+                lineaSplit=lineas[i].split("*/")
+                colorPre = lineaSplit[0].replace("[", "").replace("]", "")
+
+                color = [int(c) for c in colorPre.split(',')]
+                if len(color) == 3:
+                    r, g, b = color
+                
+                color_personalizado=QColor(r, g, b)
+                item = QStandardItem(lineaSplit[1])
+                item.setForeground(color_personalizado)
+                self.model.appendRow(item)
+               
+            self.linea=cLineas
 
 class crearCanal(InterfazVentana):
    
@@ -117,6 +152,7 @@ class UnirCanal(InterfazVentana):
         cliente.canal=(self.ip,4000)
         cliente.start()
         self.ocultarVentana()
+        return cliente
         
     
 

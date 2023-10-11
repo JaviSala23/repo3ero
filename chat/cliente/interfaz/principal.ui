@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLineEdit" name="lineEdit">
+   <widget class="QLineEdit" name="msj">
     <property name="geometry">
      <rect>
       <x>50</x>
@@ -24,7 +24,7 @@
      </rect>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="enviarMsj">
     <property name="geometry">
      <rect>
       <x>590</x>
@@ -71,7 +71,7 @@
        <height>419</height>
       </rect>
      </property>
-     <widget class="QListView" name="listView_2">
+     <widget class="QListView" name="chatList">
       <property name="geometry">
        <rect>
         <x>0</x>

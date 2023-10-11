@@ -36,7 +36,7 @@ class Servidor(QThread):
                 self.enlace.listen(3)  # Escucha hasta 3 conexiones entrantes
                 cliente, direccion_cliente = self.enlace.accept()
                 print("%s:%s se ha conectado." % direccion_cliente)
-                cliente.send(bytes("Bienvenido al chat", "utf-8"))
+               
 
                 # Agrega el cliente a la lista de conexiones
                 self.clientes.append(cliente)
@@ -76,9 +76,12 @@ class ClienteHilo(QThread):
 
     # Método run que se ejecutará cuando se inicie este hilo
     def run(self):
-        nombre = self.cliente.recv(self.tamBuffer).decode("utf8")  # Recibe el nombre del cliente
-        msjBienvenda = 'Bienvenido %s! Si quiere salir escriba {quit} .' % nombre
-        self.cliente.send(bytes(msjBienvenda, 'utf-8'))  # Envía un mensaje de bienvenida al cliente
+        datos = self.cliente.recv(self.tamBuffer).decode("utf8")
+        datosCort=datos.split('-')
+        nombre=datosCort[1]
+        color=datosCort[0]
+        msjBienvenda = 'Bienvenido %s! .' % nombre
+        self.cliente.send(bytes(color+"*/"+msjBienvenda, 'utf-8'))  # Envía un mensaje de bienvenida al cliente
         msj = "%s se ha unido al chat!" % nombre
         self.servidor.broadcast(msj)  # Envía un mensaje de unión del cliente al servidor para ser transmitido a todos
 
@@ -88,7 +91,7 @@ class ClienteHilo(QThread):
             if msj != bytes("{quit}", 'utf-8'):
                 msj = msj.decode('utf-8')
                 self.servidor.mensaje_recibido.emit(nombre + ": " + msj)  # Emite el mensaje recibido al servidor
-                self.servidor.broadcast(msj, nombre + ": ")  # Transmite el mensaje a todos los clientes
+                self.servidor.broadcast(msj, color+"*/"+nombre + ": ")  # Transmite el mensaje a todos los clientes
             else:
                 self.cliente.send(bytes("{quit}", 'utf-8'))  # Envia un mensaje de salida al cliente
                 self.servidor.eliminar_cliente(self.cliente)  # Llama al método del servidor para eliminar al cliente

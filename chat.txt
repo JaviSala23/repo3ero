@@ -1,0 +1,5 @@
+[255, 0, 0] */ Se ha conectado al chat con ip: 192.168.100.104
+[255, 0, 0] */Bienvenido  Javier333! . Javier333 se ha unido al chat!
+[255, 0, 0] */ Javier333: Javier
+[255, 0, 0] */ Javier333: Javier
+[255, 0, 0] */ Javier333: Javier

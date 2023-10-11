@@ -1,6 +1,6 @@
 from interfaz import *
 from cliente.cliente import *
-
+from PyQt5 import uic,QtWidgets
 
 
 
@@ -48,5 +48,7 @@ modificarPerfil.formulario.colores.activated.connect(modificarPerfil.cambiarColo
 
 ventanaCanal.formulario.Aceptar.clicked.connect(lambda:ventanaCanal.aceptarCanal(cliente))
 ventanaCanal.formulario.Cancelar.clicked.connect(ventanaCanal.ocultarVentana)
+principal.formulario.enviarMsj.clicked.connect(lambda:principal.enviar(cliente))
+
 
 aplicacion.exec()
